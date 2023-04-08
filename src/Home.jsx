@@ -46,12 +46,3 @@ export default function Home() {
   );
 }
 
-
-
-class FormComp extends React.Component {
-  render() {
-    return (
-      <h1>d</h1>
-    )
-  }
-}

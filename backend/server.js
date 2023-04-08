@@ -5,6 +5,7 @@ const bodyparser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
 const { textVide } = require('text-vide');
+const {Authenticator} = require('openai-token')
 
 
 async function main() {
@@ -71,10 +72,15 @@ async function main() {
     await users.updateOne(req.body[0], req.body[1])
     res.sendStatus(200)
   })
-  app.post('/getbionic'), async (req, res) => {
+  app.post('/bionic'), async (req, res) => {
     res.send({ text: textVide(req.body.text) })
   }
-  app.post('/get')
+  //Efficient Summarization for Educational Texts: Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: "explain _ to someone who likes _"
+  app.post('/summary'), async (req, res) => {
+    const auth = new Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASS)
+  await auth.begin()
+  const token = await auth.getAccessToken()
+  }
   app.listen(3001, (err) => {
     if (err) console.log("Error in server setup: " + err)
     console.log('Server listening on port 3001');

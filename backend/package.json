@@ -4,7 +4,7 @@
   "description": "Focusly Backend",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm i",
     "start": "node server.js"
   },
   "author": "",
@@ -13,6 +13,7 @@
     "chatgpt": "^5.2.2",
     "google-images": "^2.1.0",
     "mongodb": "^5.2.0",
+    "openai-token": "^1.0.0",
     "text-vide": "^1.7.0"
   }
 }
