@@ -1,0 +1,16 @@
+{
+  "name": "focusly-backend",
+  "version": "1.0.0",
+  "description": "Focusly Backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chatgpt": "^5.2.2",
+    "google-images": "^2.1.0"
+  }
+}
