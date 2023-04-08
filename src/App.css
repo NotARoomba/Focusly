@@ -44,15 +44,12 @@ p{
 }
 
 .button{
-  background-color:grey;
   padding: 5px 30px 5px 30px;
   width: max-content;
   align-self:center;
-  margin:10px;
 }
 
 .nextbutton{
-  background-color: #d1d1d1;
   padding: 5px 20px 5px 20px;
   width: max-content;
   align-self:center;
@@ -63,7 +60,12 @@ p{
 
 #section2{
   flex-direction:column;
-  display:flex;
+  display:none;
+}
+
+#section3{
+  flex-direction:column;
+  display:none;
 }
 
 form{
@@ -77,4 +79,112 @@ input{
 
 label{
   margin:10px;
+  padding: 5px 10px;
+}
+
+
+input[type="radio"]{
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  
+}
+
+input[type="radio"]:checked + label{
+  background-color: #d1d1d1;
+}
+
+#pink:checked + label{
+  background-color: #ffc2ec;
+}
+
+#blue:checked + label{
+  background-color: #c2c9ff;
+}
+
+#green:checked + label{
+  background-color: #c3eed0;
+}
+
+.paragraphs label{
+  padding: 5px 30px 5px 30px;
+  align-items:center;
+  display:flex;
+}
+
+.paragraphs label img{
+  align-self:center;
+}
+
+.paragraphs{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+
+.section{
+  display:flex;
+  flex-direction:column;
+}
+
+
+/* LOGO BALL!*/
+#bowlG{
+	position:relative;
+	width:105px;
+	height:105px;
+}
+#bowl_ringG{
+	position:absolute;
+	width:105px;
+	height:105px;
+	border:9px solid #000000;
+	border-radius:105px;
+}
+.ball_holderG{
+	position:absolute;
+	width:28px;
+	height:105px;
+	left:28px;
+	top:-9px;
+	animation-name:ball_moveG;
+	animation-duration:2.8s;
+	animation-iteration-count:infinite;
+	animation-timing-function:linear;
+}
+.ballG{
+	position:absolute;
+	left:0px;
+	top:-14px;
+	width:42px;
+	height:42px;
+	background:#e6e6e6;
+	border-radius:35px;
+}
+@keyframes ball_moveG{
+	0%{
+		transform:rotate(0deg)
+	}
+	100%{
+		transform:rotate(360deg)
+	}
+}
+
+
+.bowl-container{
+  display:flex;
+  justify-content:center;
+  margin:10px;
+}
+
+.bottom-box{
+  
+}
+
+.top-box{
+  
+}
+
+#section-8{
+  
 }

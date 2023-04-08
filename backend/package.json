@@ -12,6 +12,7 @@
   "dependencies": {
     "chatgpt": "^5.2.2",
     "google-images": "^2.1.0",
-    "mongodb": "^5.2.0"
+    "mongodb": "^5.2.0",
+    "text-vide": "^1.7.0"
   }
 }

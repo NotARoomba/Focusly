@@ -1,23 +1,27 @@
-import './App.css'
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import * as React from "react";
+import { useLocation, useRoutes } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+
+import Home from "./Home";
+import Form from "./Form";
+import Error from "./Error"
 
 export default function App() {
-  const title = "Welcome to Focusly"
+  const router = useRoutes([
+    {
+      path: "/",
+      element: <Home />,
+      errorElement: <Error />,
+    },
+    {
+      path: "start",
+      element: <Form />,
+    },
+  ]);
+  const location = useLocation();
   return (
-    <div className="box">
-      <h1>{title}</h1>
-      <h2>Enjoy studying again</h2>
-      <button className="button rounded-full" onClick="">Start</button>
-    </div>
+    <AnimatePresence mode="wait">
+      {React.cloneElement(router, { key: location.pathname })}
+    </AnimatePresence>
   );
-} 
-
-
-
-class FormComp extends React.Component{
-  render() {
-  return(
-    <h1>d</h1>
-  )}
-}
+};
