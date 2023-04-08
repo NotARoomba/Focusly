@@ -1,2 +1,2 @@
-#Focusly
+# Focusly
 By students, for students
