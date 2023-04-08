@@ -1,5 +1,80 @@
 main {
   text-align: center;
   vertical-align: center;
-  line-height: 100vh
+  line-height: 100vh;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body{
+  padding:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+h1{
+  font-family:Inter;
+  font-weight:600;
+  font-size:60px;
+}
+
+h2{
+  font-family:Inter;
+  font-weight:600;
+  font-size:30px;
+}
+
+p{
+  font-family:Inter;
+  font-weight:400;
+}
+  
+
+.box{
+  text-align:center;
+  vertical-align:center;
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+  
+}
+
+.button{
+  background-color:grey;
+  padding: 5px 30px 5px 30px;
+  width: max-content;
+  align-self:center;
+  margin:10px;
+}
+
+.nextbutton{
+  background-color: #d1d1d1;
+  padding: 5px 20px 5px 20px;
+  width: max-content;
+  align-self:center;
+  margin:10px;
+  margin-top:30px;
+  
+}
+
+#section2{
+  flex-direction:column;
+  display:flex;
+}
+
+form{
+  flex-direction:column;
+  display:flex;
+}
+
+input{
+  padding: 5px 30px 5px 30px;
+}
+
+label{
+  margin:10px;
 }
