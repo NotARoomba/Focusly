@@ -276,7 +276,7 @@ export default function Form() {
 
         const data = await superagent.post(BACKEND_URL + "/signup").send({ email: person.email })
         if (data.body) {
-          $('#errorMsg').get(0).innerHtml = data.body
+          $('#errorMsg').get(0).innerText = data.body.text
           return $('#errorBox').get(0).style.visibility = 'visible'
         } else if ($('#errorBox').get(0).style.visibility == 'visible') {
           $('#errorBox').get(0).style.visibility = 'hidden'
