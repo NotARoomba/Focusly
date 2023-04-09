@@ -171,7 +171,7 @@ export default function Dashboard() {
           <ToolBar/>
           <SideBar/>
           <NoteDoc/>
-          <div class="miniside" id="miniside" onClick={closeSide}><i class="mini lni lni-plus"></i></div>
+          <div class="miniside" id="miniside" onClick={closeSide}><i class="mini lni lni-plus rounded-lg"></i></div>
           <div id="userSettings" className="rounded-lg drop-shadow-xl">
             <h2>Settings</h2>
             <i className="close lni lni-close" onClick={CloseSettings}></i>

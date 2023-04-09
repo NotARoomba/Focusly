@@ -284,7 +284,7 @@ input[type="radio"]:checked + label{
   width:50px;
   height:80%;
   right:10px;
-  position: absolute;
+  position: sticky;
   justify-content:center;
   align-items:center;
 }
