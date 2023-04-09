@@ -5,7 +5,16 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Form from './Form'
 import { motion } from "framer-motion";
 
+function setCookie(key, value) {
+  var expires = new Date();
+  expires.setTime(expires.getTime() + (10 * 365 * 24 * 60 * 60 * 1000));
+  document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
 
+function getCookie(key) {
+  var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+  return keyValue ? keyValue[2] : null;
+}
 
 /* DOCUMENT COMPONENT STARTS */
 class NoteDoc extends React.Component {
@@ -238,6 +247,10 @@ function closeSide(){
   
   
 }
+async function generate() {
+  const data = await superagent.post(BACKEND_URL + "/summary").send({ topic: $('#generateInput').get(0).value, interests: await superagent.post(BACKEND_URL + "/user").send({key: getCookie("key").body.topics.join(', ')})})
+  console.log(data)
+}
 
 class GenerateNote extends React.Component{
   render() {
@@ -246,8 +259,8 @@ class GenerateNote extends React.Component{
         <h2>Generate New Note</h2>
         <p>What do you want to learn about today?</p>
           <div className="search">
-            <input type="text" name="search" className="border-2 border-black rounded-full mt-10" />
-             <button type="submit" className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10	" id="nextButton">Generate</button>
+            <input type="text" id="generateInput" name="search" className="border-2 border-black rounded-full mt-10" />
+             <button type="submit" className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10	" id="nextButton" onClick={generate}>Generate</button>
           </div>
           
       </div>

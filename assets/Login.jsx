@@ -1,10 +1,12 @@
 import './App.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, useNavigate } from "react-router-dom";
 import Form from './Form'
 import { motion } from "framer-motion";
 const BACKEND_URL = "https://focusly-api.onrender.com"
+
+let navigate = null;
 
 function setCookie(key, value) {
   var expires = new Date();
@@ -12,7 +14,21 @@ function setCookie(key, value) {
   document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
 }
 
+async function login() {
+  const user = {email: $('#email').get(0).value.toLowerCase(), password: CryptoJS.SHA256($('#password').get(0).value).toString()}
+     let data = await superagent.post(BACKEND_URL + "/user").send(user)
+ if (data.body == null) {
+          $('#errorMsg').get(0).innerText = data.text
+          return $('#errorBox').get(0).style.visibility = 'visible'
+        } else if ($('#errorBox').get(0).style.visibility == 'visible') {
+          $('#errorBox').get(0).style.visibility = 'hidden'
+        }
+  setCookie("key", data.body.password)
+  navigate("/dashboard");
+  
+}
 export default function Login() {
+  navigate = useNavigate()
   return (
     <motion.main
       className="main__container"
@@ -40,25 +56,13 @@ export default function Login() {
             <label>Password</label>
             <input type="text" id="password" name="password" className="border-2 border-black rounded-full" />
 
-            <button type="submit" className="bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10" onClick="login" id="loginButton">Log In</button>
+            <button type="submit" className="bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10" onClick={login} id="loginButton">Log In</button>
           </div>
         </body>
       </html >
 
     </motion.main>
   );
-}
-async function login() {
-  const user = {email: $('#email').get(0).value, password: $('#password').get(0).value}
-     let data = await superagent.post(BACKEND_URL + "/user").send(user)
- if (data.body.text) {
-          $('#errorMsg').get(0).innerText = data.body.text
-          return $('#errorBox').get(0).style.visibility = 'visible'
-        } else if ($('#errorBox').get(0).style.visibility == 'visible') {
-          $('#errorBox').get(0).style.visibility = 'hidden'
-        }
-  setCookie("key", person.password)
-  navigate("/dashboard");
-  
-}
 
+
+}

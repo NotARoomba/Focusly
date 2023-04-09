@@ -46,9 +46,6 @@ async function main() {
     const users = mongo.db("userData").collection("users");
     res.json(await users.find().toArray());
   })
-  app.post('/email', (req, res) => {
-    res.end(sendMail(req.body));
-  })
   app.post('/signup', async (req, res) => {
     if (!req.body.email || !(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(req.body.email))) {
       return await res.send({body: "Enter a valid email!"})
@@ -90,6 +87,8 @@ async function main() {
       accessToken: token,
       apiReverseProxyUrl: "https://api.pawan.krd/backend-api/conversation"
     })
+     const data = await api.sendMessage(`Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: \"explain ${req.body.topic}  to someone who likes ${res.body.interests}\"`)
+    return res.send(data.text)
   }
   app.listen(3001, (err) => {
     if (err) console.log("Error in server setup: " + err)

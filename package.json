@@ -20,6 +20,7 @@
     "framer-motion": "^10.11.2",
     "mongodb": "^5.2.0",
     "openai-token": "^1.0.0",
+    "react-native": "^0.71.6",
     "react-router-dom": "^6.10.0",
     "text-vide": "^1.7.0"
   },

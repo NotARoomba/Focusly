@@ -268,14 +268,16 @@ export default function Form() {
 
   async function next() {
     console.log(section)
+    
+    document.getElementById("nextButton").disabled = true;
     switch (section) {
       case 2:
         person[$('input[type=text]').toArray()[section - 2].name] = $('input[type=text]').toArray()[section - 2].value
         break;
       case 3:
-        person[$('input[type=text]').toArray()[section - 2].name] = $('input[type=text]').toArray()[section - 2].value
+        person[$('input[type=text]').toArray()[section - 2].name] = $('input[type=text]').toArray()[section - 2].value.toLowerCase()
 
-        const data = await superagent.post(BACKEND_URL + "/signup").send({ email: person.email })
+        const data = await superagent.post(BACKEND_URL + "/signup").send({ email: person.email.toLowerCase() })
         if (data.body) {
           $('#errorMsg').get(0).innerText = data.body.text
           return $('#errorBox').get(0).style.visibility = 'visible'
@@ -298,7 +300,6 @@ export default function Form() {
       })
     }
     Array.from(document.querySelectorAll('.section')).forEach(f => f.style.display = 'none')
-    document.getElementById("nextButton").disabled = true;
     setTimeout(function() { document.getElementById("nextButton").disabled = false }, 1000);
     if (section < 8) {
       const sectionCurrent = document.getElementById("section-" + (section))

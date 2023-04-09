@@ -370,7 +370,7 @@ footer{
 /*SIDE BAR CSS STARTS*/
 
 .sidebar{
-  background-color:pink;
+  background-color:#c4c4c4;
   width:200px;
   height:100vh;
   display:flex;
@@ -397,7 +397,7 @@ footer{
 
 .closeSide:hover{
   transition:.4s;
-  color:#963c4b;
+  color:#4d4c4c;
 }
 
 .note{
@@ -409,11 +409,11 @@ footer{
 .note input[type="radio"]:checked + label{
   color:black;
   width:600px;
-  background-color:#fff0f0;
+  background-color:#f0f0f0;
 }
 
 .note label{
-  background-color:#ff9999;
+  background-color:#696969;
   padding:10px;
   padding-left:30px;
   text-overflow: ellipsis;
@@ -433,7 +433,7 @@ section{
 }
 
 .miniside{
-  background-color: #ff9999;
+  background-color: #b0b0b0;
   width:40px;
   height:40px;
   left:-4px;
@@ -449,7 +449,7 @@ section{
 }
 
 .miniside:hover{
-  background:#f87777;
+  background:#808080;
   transition:.4s;
 }
 
@@ -459,7 +459,7 @@ section{
   margin-top:30px;;
 }
 .doc-h1{
-  color:#ff9999;
+  color:#d6d6d6;
 }
 
 .doc-body{

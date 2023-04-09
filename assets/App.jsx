@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useLocation, useRoutes } from "react-router-dom";
+import { useLocation, useRoutes, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Home from "./Home";
@@ -39,14 +39,6 @@ export default function App() {
       element: <Login />,
     }
   ]);
-  const location = useLocation();
-  if (getCookie("key") != null && location.pathname != '/dashboard') {
-    return (
-    <AnimatePresence mode="wait">
-      {React.cloneElement(router, { key: '/dashboard' })}
-    </AnimatePresence>
-  );
-  }
   return (
     <AnimatePresence mode="wait">
       {React.cloneElement(router, { key: location.pathname })}
