@@ -87,7 +87,7 @@ async function main() {
       accessToken: token,
       apiReverseProxyUrl: "https://api.pawan.krd/backend-api/conversation"
     })
-     const data = await api.sendMessage(`Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: \"explain ${req.body.topic}  to someone who likes ${res.body.interests}\"`)
+     const data = await api.sendMessage(`Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: \"explain ${req.body.topic}  to someone who likes ${req.body.interests}\"`)
     return res.send(data.text)
   })
   app.listen(3001, (err) => {

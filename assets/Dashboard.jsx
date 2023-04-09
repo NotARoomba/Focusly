@@ -249,8 +249,12 @@ function closeSide(){
   
 }
 async function generate() {
-  const topics = await superagent.post(BACKEND_URL + "/user").send({password: getCookie("key")})
-  const data = await superagent.post(BACKEND_URL + "/summary").send({ topic: $('#generateInput').get(0).value, interests: topics.body.topics.join(', ')})
+  const user = await superagent.post(BACKEND_URL + "/user").send({password: getCookie("key")})
+  let data = await superagent.post(BACKEND_URL + "/summary").send({ topic: $('#generateInput').get(0).value, interests: user.body.topics.join(', ')})
+  console.log(data)
+  if (user.body.bionic) {
+    data = await superagent.post(BACKEND_URL + "/bionic").send({ text: data.body.text})
+  }
   console.log(data)
 }
 
