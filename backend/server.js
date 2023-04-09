@@ -4,7 +4,23 @@ const bodyparser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
 const { textVide } = require('text-vide');
+const winston = require('winston');
+const { hostname }  = require('os');
+require('winston-syslog');
+const papertrail = new winston.transports.Syslog({
+  host: 'logs2.papertrailapp.com',
+  port: 53939,
+  protocol: 'tls4',
+  localhost: hostname(),
+  eol: '\n',
+});
 
+const logger = winston.createLogger({
+  format: winston.format.simple(),
+  levels: winston.config.syslog.levels,
+  transports: [papertrail],
+});
+logger.info('INIT APP')
 
 async function main() {
   const mongo = await MongoClient.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true, keepAlive: true })
@@ -40,6 +56,28 @@ async function main() {
       return await res.send({body: "Enter a valid email!"})
     }
     const users = mongo.db("userData").collection("users");
+    logger.info(const winston = require('winston');
+const bodyparser  = require('body-parser'); 
+const express  = require('express');
+const cors = require('cors');
+const { hostname }  = require('os');
+require('winston-syslog');
+const { Configuration, OpenAIApi }  = require('openai');
+const stringy = require('stringy')
+const papertrail = new winston.transports.Syslog({
+  host: 'logs2.papertrailapp.com',
+  port: 53939,
+  protocol: 'tls4',
+  localhost: hostname(),
+  eol: '\n',
+});
+
+const logger = winston.createLogger({
+  format: winston.format.simple(),
+  levels: winston.config.syslog.levels,
+  transports: [papertrail],
+});
+logger.info(users.findOne(req.body))
     if (users.findOne(req.body) != null) {
       return await res.send({text: "That email already exists!"}) } else {
       try {
