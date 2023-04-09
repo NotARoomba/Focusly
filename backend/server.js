@@ -36,7 +36,7 @@ async function main() {
   app.get('/', (req, res) => {
     return res.send("Hey you're not supposed to be here!")
   })
-  app.post('/user', (req, res) => {
+  app.post('/user', async (req, res) => {
     const users = mongo.db("userData").collection("users");
     const user = await users.findOne(req.body)
     if (user != null) return res.send(user);
