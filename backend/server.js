@@ -70,7 +70,7 @@ async function main() {
   app.post('/userupdate', async (req, res) => {
     const users = mongo.db("userData").collection("users");
     await users.updateOne(req.body[0], req.body[1])
-    return await res.sendStatus(200)
+    return res.sendStatus(200)
   })
   app.post('/bionic', async (req, res) => {
     return res.send({ text: textVide(req.body.text) })
@@ -79,7 +79,7 @@ async function main() {
   app.post('/summary', async (req, res) => {
     const {ChatGPTAPI} = await import('chatgpt')
     const api = new ChatGPTAPI({
-      apiKey: pricess.env.OPENAI,
+      apiKey: process.env.OPENAI,
     })
      const data = await api.sendMessage(`Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. Please also add these classNames to the HTML elements used depending on the type: h1, className="doc-h1"  h2, className= "doc-h2" (normal div / paragraph), = "doc-body".  Also for the headers and titles to use the color ${req.body.color} by using a style tag inside the html, for example style="color:Tomato;" would be appropiate for red. The text you have to summarise use is: "explain ${req.body.topic}  to someone who likes ${req.body.interests}"`)
     const title = await api.sendMessage(`From the text in this HTML "${data.text}" generate a 1-3 word title`)

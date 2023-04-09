@@ -72,7 +72,7 @@ class SideBar extends React.Component {
         
         
         <ul>
-          <li>
+          <li id="NOTESLIST">
             <div className="note">
             <input type="radio" value="note1" name="notes" id="note1" />
               <label htmlFor="note1" className="rounded-full">
@@ -257,7 +257,12 @@ function closeSide(){
     side.style.visibility = "hidden"
     
   }
+
+function checked() {
+  let selectedNote;
   
+}
+
   
 }
 async function generate() {
@@ -268,7 +273,14 @@ async function generate() {
     data = await superagent.post(BACKEND_URL + "/bionic").send({ text: data.body.text})
   }
   console.log(data)
+  user.body.notes.append(data.body)
+  await superagent.post(BACKEND_URL + "/userupdate").send([{ password: getCookie('key') }, { $set: { notes: user.body.notes } }])
   $('#docdoc').append(data)
+  $('#NOTESLIST').append(`<input type="radio" value="${data.body.title}" name="notes" id="${data.body.title}" />
+              <label htmlFor="${data.body.title}" className="rounded-full">
+                ${data.body.title}
+              </label>
+            </div>`)
 }
 
 class GenerateNote extends React.Component{
