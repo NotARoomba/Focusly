@@ -11,15 +11,16 @@ import { motion } from "framer-motion";
 class NoteDoc extends React.Component {
   render() {
     return (
-      <div className="document">
-        <header className="doc-head">
+      <div className="document" id="docdoc">
+        <div className="doc-head">
           <h1 className="doc-h1">This is the topic</h1>
           <p className="doc-parag">This is information about the topic</p>
-        </header>
+        </div>
 
         <div className="doc-body">
           <h2 className="doc-h2">This is a header2</h2>
           <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
+            
             </p>
           <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
@@ -112,7 +113,7 @@ class ToolBar extends React.Component{
             </button>
           </li>
           <li>
-            <button id="export">
+            <button id="export" onClick={Download}>
              <i className="icon lni lni-save rounded-full"></i>
             </button>
           </li>
@@ -128,8 +129,6 @@ class ToolBar extends React.Component{
   }
 }
 
-
-
       /* HIGHLIGHTER FUNCTION */
       function highlight(){
           if (document.getSelection)
@@ -139,48 +138,23 @@ class ToolBar extends React.Component{
       return document.getSelection();
           }
 
+
+/** PRINT OR DOWNLOAD DOCUMENT FUNCTION */
+function Download() {
+  $("#docdoc").printThis()
+}
+
+
+
 /* TOOOOOOL BOX COMPONENT EEEENDS */
 
-function CloseSettings(){
-  const close = document.getElementById("userSettings")
-  if(close.style.display == "flex"){
-    close.style.display = "none"
-  } else {
-    close.style.display = "flex"
-  }
-  
-}
-
-function closeSide(){
-  
- const side = document.getElementById("sidebar")
-  const miniside = document.getElementById("miniside")
-
-  if (side.style.visibility == "hidden") {
-    miniside.style.visibility = "hidden"
-    side.style.visibility = "visible"
-  } else {
-    miniside.style.visibility = "visible"
-    side.style.visibility = "hidden"
-    
-  }
-  
-  
-}
 
 
-export default function Dashboard() {
-  
-  return (
-      <html>
-        <head>
-        </head>
-        <body>
-          <section>
-          <SideBar/>
-          <NoteDoc/>
-          <div className="miniside rounded-lg" id="miniside" onClick={closeSide}><i className="mini lni lni-plus rounded-lg"></i></div>
-          <div id="userSettings" className="rounded-lg drop-shadow-xl">
+/** USER SETTINGS COMPONENT */
+class UserSettings extends React.Component{
+  render() {
+    return(
+      <div id="userSettings" className="rounded-lg drop-shadow-xl">
             <h2>Settings</h2>
             <i className="close lni lni-close" onClick={CloseSettings}></i>
             <div className="setting-quest" id="sq1">
@@ -232,6 +206,54 @@ export default function Dashboard() {
            
             
           </div>
+    )
+  }
+}
+
+
+/** CLOSE AND OPEN SIDE BAR AND SETTINGS FUNCTIONS */
+
+function CloseSettings(){
+  const close = document.getElementById("userSettings")
+  if(close.style.display == "flex"){
+    close.style.display = "none"
+  } else {
+    close.style.display = "flex"
+  }
+  
+}
+
+function closeSide(){
+  
+ const side = document.getElementById("sidebar")
+  const miniside = document.getElementById("miniside")
+
+  if (side.style.visibility == "hidden") {
+    miniside.style.visibility = "hidden"
+    side.style.visibility = "visible"
+  } else {
+    miniside.style.visibility = "visible"
+    side.style.visibility = "hidden"
+    
+  }
+  
+  
+}
+
+
+
+export default function Dashboard() {
+  
+  return (
+      <html>
+        <body>
+          <section>
+            <UserSettings/>
+            <SideBar/>
+            <NoteDoc/>
+  
+            <div className="miniside rounded-lg" id="miniside" onClick={closeSide}><i className="mini lni lni-plus rounded-lg"></i></div>
+          
 
             <footer>
           <ToolBar/>

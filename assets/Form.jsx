@@ -24,7 +24,8 @@ let person = {
   bionic: null,
   reading: null,
   color: "",
-  topics: []
+  topics: [],
+  notes: []
 }
 let section = 1;
 export default function Form() {
