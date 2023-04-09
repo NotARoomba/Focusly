@@ -72,11 +72,11 @@ async function main() {
     await users.updateOne(req.body[0], req.body[1])
     return await res.sendStatus(200)
   })
-  app.post('/bionic'), async (req, res) => {
+  app.post('/bionic', async (req, res) => {
     return res.send({ text: textVide(req.body.text) })
-  }
+  })
   //Efficient Summarization for Educational Texts: Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: "explain _ to someone who likes _"
-  app.post('/summary'), async (req, res) => {
+  app.post('/summary', async (req, res) => {
     const openai = await import('openai-token')
     const auth = new openai.Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASSWORD)
     await auth.begin()
@@ -89,7 +89,7 @@ async function main() {
     })
      const data = await api.sendMessage(`Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: \"explain ${req.body.topic}  to someone who likes ${res.body.interests}\"`)
     return res.send(data.text)
-  }
+  })
   app.listen(3001, (err) => {
     if (err) console.log("Error in server setup: " + err)
     console.log('Server listening on port 3001');

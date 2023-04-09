@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Form from './Form'
 import { motion } from "framer-motion";
+const BACKEND_URL = "https://focusly-api.onrender.com"
 
 function setCookie(key, value) {
   var expires = new Date();
@@ -248,7 +249,8 @@ function closeSide(){
   
 }
 async function generate() {
-  const data = await superagent.post(BACKEND_URL + "/summary").send({ topic: $('#generateInput').get(0).value, interests: await superagent.post(BACKEND_URL + "/user").send({key: getCookie("key").body.topics.join(', ')})})
+  const topics = await superagent.post(BACKEND_URL + "/user").send({password: getCookie("key")})
+  const data = await superagent.post(BACKEND_URL + "/summary").send({ topic: $('#generateInput').get(0).value, interests: topics.body.topics.join(', ')})
   console.log(data)
 }
 
