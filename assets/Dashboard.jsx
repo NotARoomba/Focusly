@@ -61,7 +61,7 @@ class ToolBar extends React.Component{
             </button>
           </li>
           <li>
-            <button id="settings">
+            <button id="settings" onClick={CloseSettings}>
               <i className="icon lni lni-user rounded-full"></i>
             </button>
           </li>
@@ -87,7 +87,12 @@ class ToolBar extends React.Component{
 
 function CloseSettings(){
   const close = document.getElementById("userSettings")
-  close.style.display = "none"
+  if(close.style.display == "none"){
+    close.style.display = "flex"
+  } else {
+    close.style.display = "none"
+  }
+  
 }
 
 
@@ -100,10 +105,22 @@ export default function Dashboard() {
         </head>
         <body>
           <ToolBar/>
-          <div id="userSettings" class="rounded-lg drop-shadow-xl">
+          <div id="userSettings" className="rounded-lg drop-shadow-xl">
             <h2>Settings</h2>
-            <i class="close lni lni-close" onClick={CloseSettings}></i>
-            <p>jfdawesjifeoawskfw</p>
+            <i className="close lni lni-close" onClick={CloseSettings}></i>
+            <div class="setting-quest">
+              <p className="mr-5 ml-2"><b>Reading</b></p>
+              <input type="radio" value="bionic" name="reading" id="bionic" />
+              <label htmlFor="bionic" className="border-2 border-black rounded-full">
+                <b>Bio</b>nic
+              </label>
+
+              <input type="radio" value="nonbionic" name="reading" id="nobionic" />
+              <label htmlFor="nobionic" className="border-2 border-black rounded-full">
+                Standard
+              </label>
+            </div>
+           
             
           </div>
 

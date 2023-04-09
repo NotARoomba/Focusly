@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { motion, useAnimationControls } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-const BACKEND_URL = "https://focusly-api.notaroomba.xyz"
+const BACKEND_URL = "https://focusly-api.onrender.com"
 
 function setCookie(key, value) {
   var expires = new Date();

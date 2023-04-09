@@ -37,35 +37,26 @@ async function main() {
   })
   app.post('/signup', async (req, res) => {
     if (!req.body.email || !(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(req.body.email))) {
-      res.sendStatus(200)
-      return res.send({body: "Enter a valid email!"})
+      return await res.send({body: "Enter a valid email!"})
     }
     const users = mongo.db("userData").collection("users");
     if (!users.findOne({ email: req.body.email })) {
-      res.sendStatus(200)
-      res.send({body: "That email already exists!"})
-      return 
-    }
-    if (req.body.name) {
+      return await res.send({body: "That email already exists!"}) } else {
       try {
         await users.insertOne(req.body)
-        res.sendStatus(200);
+        return await res.sendStatus(200);
       } catch (e) {
         console.log(e)
-        res.sendStatus(400);
-        return res.send(e)
+        await res.sendStatus(400);
+        return await res.send(e)
       }
         
     }
   })
   app.post('/userupdate', async (req, res) => {
     const users = mongo.db("userData").collection("users");
-    if (req.body[1].$set.name != null && users.findOne({ name: req.body.name }) != null) {
-      res.send("That name already exists!")
-      return res.sendStatus(400)
-    }
     await users.updateOne(req.body[0], req.body[1])
-    return res.sendStatus(200)
+    return await res.sendStatus(200)
   })
   app.post('/bionic'), async (req, res) => {
     return res.send({ text: textVide(req.body.text) })
