@@ -486,3 +486,8 @@ section{
 .search input{
   width:100%;
 }
+
+.bolls{
+  display:flex;
+  flex-direction:row;
+}

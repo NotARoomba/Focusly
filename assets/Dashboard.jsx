@@ -17,6 +17,17 @@ function getCookie(key) {
   return keyValue ? keyValue[2] : null;
 }
 
+
+async function checked() {
+  const checkedNote = $('input[name="notes"]:checked');
+  const user = await superagent.post(BACKEND_URL + "/user").send({password: getCookie("key")})
+  for (const note of user.body.notes) {
+    if (note.title == checkedNote.get(0).val()) {
+      $('#docdoc').html(data)
+    }
+  }
+}
+
 /* DOCUMENT COMPONENT STARTS */
 class NoteDoc extends React.Component {
   render() {
@@ -258,20 +269,7 @@ function closeSide(){
     
   }
 
-function checked() {
-  const checkedNote = $('input[name="notes"]:checked');
-    
-  const user = await superagent.post(BACKEND_URL + "/user").send({password: getCookie("key")})
-  for (const note of user.body.notes) {
-    if (note.title == checkedNote.get(0).val()) {
-      $('#docdoc').html(data)
-    }
-  }
-}
   
-  
-  
-}
 
   
 }
@@ -285,8 +283,8 @@ async function generate() {
   console.log(data)
   user.body.notes.append(data.body)
   await superagent.post(BACKEND_URL + "/userupdate").send([{ password: getCookie('key') }, { $set: { notes: user.body.notes } }])
-  $('#docdoc').append(data)
-  $('#NOTESLIST').append(`<input type="radio" value="${data.body.title}" name="notes" id="${data.body.title}" />
+  $('#docdoc').html(data)
+  $('#NOTESLIST').append(`<input type="radio" onClick={checked} value="${data.body.title}" name="notes" id="${data.body.title}" />
               <label htmlFor="${data.body.title}" className="rounded-full">
                 ${data.body.title}
               </label>
@@ -300,8 +298,21 @@ class GenerateNote extends React.Component{
         <h2>Generate New Note</h2>
         <p>What do you want to learn about today?</p>
           <div className="search">
+            <div className="bolls">
             <input type="text" id="generateInput" name="search" className="border-2 border-black rounded-full mt-10" />
+            <div className="bowl-container">
+              <div id="bowlG">
+                <div id="bowl_ringG">
+                  <div className="ball_holderG">
+                    <div className="ballG"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
              <button type="submit" className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10	" id="nextButton" onClick={generate}>Generate</button>
+            
+            
           </div>
           
       </div>
