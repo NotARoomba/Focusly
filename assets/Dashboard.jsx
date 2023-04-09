@@ -36,8 +36,8 @@ import { motion } from "framer-motion";
 class ToolBar extends React.Component{
   render() {
     return(
-    
-    <div className="tool-box rounded-full">
+     
+      <div className="tool-box rounded-full">
         <ul>
           <li>
             <button id="highlight" onClick={highlight}>
@@ -66,8 +66,8 @@ class ToolBar extends React.Component{
             </button>
           </li>
         </ul>
-    </div>
-     
+      </div>
+      
     )
   }
 }
@@ -85,7 +85,10 @@ class ToolBar extends React.Component{
 
 /* TOOOOOOL BOX COMPONENT EEEENDS */
 
-
+function CloseSettings(){
+  const close = document.getElementById("userSettings")
+  close.style.display = "none"
+}
 
 
 
@@ -93,9 +96,16 @@ export default function Dashboard() {
   
   return (
       <html>
+        <head>
+        </head>
         <body>
-          
           <ToolBar/>
+          <div id="userSettings" class="rounded-lg drop-shadow-xl">
+            <h2>Settings</h2>
+            <i class="close lni lni-close" onClick={CloseSettings}></i>
+            <p>jfdawesjifeoawskfw</p>
+            
+          </div>
 
         </body>
       </html >

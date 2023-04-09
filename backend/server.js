@@ -9,7 +9,7 @@ const { textVide } = require('text-vide');
 async function main() {
   const mongo = await MongoClient.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true, keepAlive: true })
   const app = express()
-  const allowedOrigins = ['http://localhost:3000', 'https://focusly.notaroomba.xyz', 'https://notaroomba.xyz', 'http://focusly.notaroomba.xyz', 'https://focusly.awangran.repl.co'];
+  const allowedOrigins = ['http://localhost:3000', 'https://focusly.notaroomba.xyz', 'https://notaroomba.xyz', 'http://focusly.notaroomba.xyz','https://focusly.awangran.repl.co'];
 
   app.use(cors({
     origin: allowedOrigins,
@@ -43,7 +43,8 @@ async function main() {
     const users = mongo.db("userData").collection("users");
     if (!users.findOne({ email: req.body.email })) {
       res.sendStatus(200)
-      return res.send({body: "That email already exists!"})
+      res.send({body: "That email already exists!"})
+      return 
     }
     if (req.body.name) {
       try {

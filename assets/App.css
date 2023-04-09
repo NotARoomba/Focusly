@@ -15,6 +15,7 @@ body{
   justify-content:center;
   align-items:center;
   flex-direction:column;
+  height:100%
 }
 
 h1{
@@ -273,9 +274,9 @@ input[type="radio"]:checked + label{
   width:50px;
   height:80%;
   right:10px;
+  position: absolute;
   justify-content:center;
   align-items:center;
-  position: sticky;
 }
 
 .icon{
@@ -291,9 +292,27 @@ input[type="radio"]:checked + label{
   background-color:#545454;
 }
 
-
-
-.box2{
+#userSettings{
+  background-color:#c7c7c7;
+  position:absolute;
+  width:50%;
+  height:50%;
   display:flex;
-  width:100%
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  transition:.5s;
+}
+
+.close{
+  position:absolute;
+  right:10px;
+  top:10px;
+  margin:5px;
+  font-weight:900;
+}
+
+.close:hover{
+  color:#adadad;
+  transition:.4s;
 }
