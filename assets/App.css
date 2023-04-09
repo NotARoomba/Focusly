@@ -490,4 +490,47 @@ section{
 .bolls{
   display:flex;
   flex-direction:row;
+  align-items:center;
 }
+
+#bowlG2{
+	position:relative;
+	width:22px;
+	height:22px;
+}
+#bowl_ringG2{
+	position:absolute;
+	width:22px;
+	height:22px;
+	border:2px solid #000000;
+	border-radius:22px;
+}
+.ball_holderG2{
+	position:absolute;
+	width:6px;
+	height:22px;
+	left:6px;
+	top:-2px;
+	animation-name:ball_moveG;
+	animation-duration:2.8s;
+	animation-iteration-count:infinite;
+	animation-timing-function:linear;
+}
+.ballG2{
+	position:absolute;
+	left:0px;
+	top:-3px;
+	width:9px;
+	height:9px;
+	background:#C4C4C4;
+	border-radius:7px;
+}
+@keyframes ball_moveG2{
+	0%{
+		transform:rotate(0deg)
+	}
+	100%{
+		transform:rotate(360deg)
+	}
+}
+

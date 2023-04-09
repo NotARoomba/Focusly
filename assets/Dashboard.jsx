@@ -99,6 +99,7 @@ class SideBar extends React.Component {
             </div>
           </li>
         </ul>
+        <div onClick={toolBox}>Open ToolBar</div>
       </div>
       
     )
@@ -126,7 +127,7 @@ class ToolBar extends React.Component{
   render() {
     return(
      
-      <div className="tool-box rounded-full drop-shadow-xl">
+      <div className="tool-box rounded-full drop-shadow-xl" id="toolbox">
         <ul>
           <li>
             <button id="new">
@@ -140,8 +141,8 @@ class ToolBar extends React.Component{
             </button>
           </li>
           <li>
-            <button id="delete">
-             <i className="icon lni lni-trash-can rounded-full"></i>
+            <button id="closeTool">
+             <i className="icon lni lni-plus rounded-full" onClick={closeTool}></i>
             </button>
           </li>
           <li>
@@ -255,6 +256,16 @@ function CloseSettings(){
   
 }
 
+function closeTool(){
+  const close = document.getElementById("toolbox")
+  if(close.style.display == "flex"){
+    close.style.display = "none"
+  } else {
+    close.style.display = "flex"
+  }
+  
+}
+
 function closeSide(){
   
  const side = document.getElementById("sidebar")
@@ -278,17 +289,21 @@ async function generate() {
   let data = await superagent.post(BACKEND_URL + "/summary").send({ topic: $('#generateInput').get(0).value, interests: user.body.topics.join(', '), color: user.body.color})
   console.log(data)
   if (user.body.bionic) {
-    data = await superagent.post(BACKEND_URL + "/bionic").send({ text: data.body.text})
+    data.body.text = await superagent.post(BACKEND_URL + "/bionic").send({ text: data.body.text })
   }
   console.log(data)
-  user.body.notes.append(data.body)
+  user.body.notes.push({title: data.body.title, text: data.body.text})
   await superagent.post(BACKEND_URL + "/userupdate").send([{ password: getCookie('key') }, { $set: { notes: user.body.notes } }])
   $('#docdoc').html(data)
-  $('#NOTESLIST').append(`<input type="radio" onClick={checked} value="${data.body.title}" name="notes" id="${data.body.title}" />
-              <label htmlFor="${data.body.title}" className="rounded-full">
-                ${data.body.title}
+  $('#NOTESLIST').html() = ""
+  for (const note in user.body.notes) {
+  $('#NOTESLIST').append(`
+  <div class="note"> <input type="radio" onClick={checked} value="${note.title}" name="notes" id="${note.title}" />
+              <label htmlFor="${note.title}" className="rounded-full">
+                ${note.title}
               </label>
             </div>`)
+    }
 }
 
 class GenerateNote extends React.Component{
@@ -298,13 +313,13 @@ class GenerateNote extends React.Component{
         <h2>Generate New Note</h2>
         <p>What do you want to learn about today?</p>
           <div className="search">
-            <div className="bolls">
-            <input type="text" id="generateInput" name="search" className="border-2 border-black rounded-full mt-10" />
-            <div className="bowl-container">
-              <div id="bowlG">
-                <div id="bowl_ringG">
-                  <div className="ball_holderG">
-                    <div className="ballG"></div>
+            <div className="bolls mt-10">
+            <input type="text" id="generateInput" name="search" className="border-2 border-black rounded-full mr-5"/>
+            <div className="bowl-container2">
+              <div id="bowlG2">
+                <div id="bowl_ringG2">
+                  <div className="ball_holderG2">
+                    <div className="ballG2"></div>
                   </div>
                 </div>
               </div>
@@ -338,15 +353,16 @@ export default function Dashboard() {
             <div className="miniside rounded-lg" id="miniside" onClick={closeSide}><i className="mini lni lni-plus rounded-lg"></i></div>
           
 
-            <footer>
-              {/*<ToolBar/>*/}
-          </footer>
+           
 
           </section>
 
           
 
         </body>
+         <footer>
+              <ToolBar/>
+          </footer>
       </html >
   );
 }
