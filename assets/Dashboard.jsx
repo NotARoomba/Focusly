@@ -22,6 +22,16 @@ class NoteDoc extends React.Component {
   render() {
     return (
       <div className="document" id="docdoc">
+      {/*
+  
+
+      div enclosure of the mwhole note is className="document"
+      h1 className="doc-h1"   like this 
+      h2 className= "doc-h2"
+      normal div = "doc-body"
+    
+      
+      <div className="document" id="docdoc">
         <div className="doc-head">
           <h1 className="doc-h1">This is the topic</h1>
           <p className="doc-parag">This is information about the topic</p>
@@ -41,6 +51,8 @@ class NoteDoc extends React.Component {
         </div>
         
       </div>
+    */}
+    </div>
     )
   }
 }
@@ -250,7 +262,7 @@ function closeSide(){
 }
 async function generate() {
   const user = await superagent.post(BACKEND_URL + "/user").send({password: getCookie("key")})
-  let data = await superagent.post(BACKEND_URL + "/summary").send({ topic: $('#generateInput').get(0).value, interests: user.body.topics.join(', ')})
+  let data = await superagent.post(BACKEND_URL + "/summary").send({ topic: $('#generateInput').get(0).value, interests: user.body.topics.join(', '), color: user.body.color})
   console.log(data)
   if (user.body.bionic) {
     data = await superagent.post(BACKEND_URL + "/bionic").send({ text: data.body.text})

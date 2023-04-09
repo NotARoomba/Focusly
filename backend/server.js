@@ -75,19 +75,19 @@ async function main() {
   app.post('/bionic', async (req, res) => {
     return res.send({ text: textVide(req.body.text) })
   })
-  //Efficient Summarization for Educational Texts: Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: "explain _ to someone who likes _"
+  //Efficient Summarization for Educational Texts: Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. Please also add these classNames to the HTML elements used depending on the type: h1, className="doc-h1"  h2, className= "doc-h2" (normal div / paragraph), = "doc-body". Also for the headers and titles to use the color _ by using a style tag inside the html, for example style="color:Tomato;" would be appropiate for red. The text you have to summarise use is: "explain _ to someone who likes _"
   app.post('/summary', async (req, res) => {
-    const openai = await import('openai-token')
-    const auth = new openai.Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASSWORD)
+    const {Authenticator} = await import('openai-token')
+    const auth = new Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASSWORD)
     await auth.begin()
     const token = await auth.getAccessToken()
 
-    const chat = await import('chatgpt')
-    const api = new chat.ChatGPTUnofficialProxyAPI({
+    const {ChatGPTUnofficialProxyAPI} = await import('chatgpt')
+    const api = new ChatGPTUnofficialProxyAPI({
       accessToken: token,
       apiReverseProxyUrl: "https://api.pawan.krd/backend-api/conversation"
     })
-     const data = await api.sendMessage(`Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: \"explain ${req.body.topic}  to someone who likes ${req.body.interests}\"`)
+     const data = await api.sendMessage(`Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. Please also add these classNames to the HTML elements used depending on the type: h1, className="doc-h1"  h2, className= "doc-h2" (normal div / paragraph), = "doc-body".  Also for the headers and titles to use the color ${req.body.color} by using a style tag inside the html, for example style="color:Tomato;" would be appropiate for red. The text you have to summarise use is: "explain ${req.body.topic}  to someone who likes ${req.body.interests}"`)
     return res.send(data.text)
   })
   app.listen(3001, (err) => {
