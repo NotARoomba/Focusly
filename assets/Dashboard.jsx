@@ -259,7 +259,17 @@ function closeSide(){
   }
 
 function checked() {
-  let selectedNote;
+  const checkedNote = $('input[name="notes"]:checked');
+    
+  const user = await superagent.post(BACKEND_URL + "/user").send({password: getCookie("key")})
+  for (const note of user.body.notes) {
+    if (note.title == checkedNote.get(0).val()) {
+      $('#docdoc').html(data)
+    }
+  }
+}
+  
+  
   
 }
 
