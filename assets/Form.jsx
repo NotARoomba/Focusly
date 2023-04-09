@@ -54,9 +54,9 @@ export default function Form() {
         </head>
         <body>
           <div id="errorBox" className="error-box rounded-lg">
-                <img src="src/warning.png" class="warning"></img>
-                <p class="error">Invalid. Please try again.</p>
-              </div>
+            <img src="src/img/warning.png" class="warning"></img>
+            <p class="error">Invalid. Please try again.</p>
+          </div>
           <div className="box">
 
             <motion.div
@@ -80,7 +80,7 @@ export default function Form() {
               initial="hidden"
               exit={{ 'display': 'none' }}
             >
-              
+
               <h2 className="mb-10">
                 Name
               </h2>
@@ -121,12 +121,12 @@ export default function Form() {
               <div className="paragraphs">
                 <input type="radio" value={true} name="bionic" id="bionic" />
                 <label htmlFor="bionic" className="border-2 border-black rounded">
-                  <img src="/src/bionic.png"></img>
+                  <img src="/assets/img/bionic.png"></img>
                 </label>
 
                 <input type="radio" value={false} name="bionic" id="bionic" />
                 <label htmlFor="nobionic" className="border-2 border-black rounded">
-                  <img src="/src/nobionic.png"></img>
+                  <img src="/assets/img/nobionic.png"></img>
                 </label>
 
               </div>
@@ -269,22 +269,22 @@ export default function Form() {
   async function next() {
     switch (section) {
       case 2:
-        person[$('input[type=text]').toArray()[section-2].name] = $('input[type=text]').toArray()[section-2].value
+        person[$('input[type=text]').toArray()[section - 2].name] = $('input[type=text]').toArray()[section - 2].value
         break;
       case 3:
-        person[$('input[type=text]').toArray()[section-2].name] = $('input[type=text]').toArray()[section-2].value
+        person[$('input[type=text]').toArray()[section - 2].name] = $('input[type=text]').toArray()[section - 2].value
 
-        const data = await superagent.post(BACKEND_URL + "/signup").send({ email: person.email})
+        const data = await superagent.post(BACKEND_URL + "/signup").send({ email: person.email })
         if (data.statusCode == 400) {
           return $('#errorBox').get(0).style.visibility = 'visible'
         } else if ($('#errorBox').get(0).style.visibility == 'visible') {
           $('#errorBox').get(0).style.visibility = 'hidden'
         }
-      break;
-      case 4:
-        person[$('input[type=text]').toArray()[section-2].name] = CryptoJS.SHA256($('input[type=text]').toArray()[section-2].value)
         break;
-        
+      case 4:
+        person[$('input[type=text]').toArray()[section - 2].name] = CryptoJS.SHA256($('input[type=text]').toArray()[section - 2].value)
+        break;
+
     }
     if (section >= 4) {
       $('input[type=radio]:checked').toArray().forEach(e => {
@@ -293,7 +293,7 @@ export default function Form() {
     } else {
       $('input[type=checkbox]:checked').toArray().forEach(e => {
         person.topics.push(e.value)
-    })
+      })
     }
     Array.from(document.querySelectorAll('.section')).forEach(f => f.style.display = 'none')
     document.getElementById("nextButton").disabled = true;
@@ -305,10 +305,10 @@ export default function Form() {
       eval('section' + (section + 1)).start('visible')
       section++
     } else {
-        if (await superagent.post(BACKEND_URL + "/signup").send(person).sendStatus == 200) {
-          setCookie("key", person.key)
-        }
-        
+      if (await superagent.post(BACKEND_URL + "/signup").send(person).sendStatus == 200) {
+        setCookie("key", person.key)
+      }
+
     }
   }
 }
