@@ -32,6 +32,9 @@ h2{
 p{
   font-family:Inter;
   font-weight:400;
+  text-decoration-color:red;
+  text-decoration-thickness: 3px;
+  text-decoration-style: dotted;
 }
   
 
@@ -261,4 +264,14 @@ input[type="radio"]:checked + label{
 
 .signOut{
   color:green;
+}
+
+.tool-box{
+  display:flex;
+  flex-direction:column;
+  background-color:grey;
+  width:40px;
+  height: 100%;
+  right:0;
+  position: sticky;
 }

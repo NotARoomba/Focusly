@@ -62,9 +62,45 @@ function Note({ name }) {
 
 
 /* TOOOOOOL BOX COMPONENT STARTS */
-<div className="tool-box">
-  
-</div>
+
+
+class ToolBar extends React.Component {
+  render() {
+    return (
+      <div className="tool-box rounded-lg">
+        <ul>
+          <li>
+            <img class="logo"></img>
+          </li>
+          <li>
+            <button id="highlight" onClick={highlight}></button>
+          </li>
+          <li>
+            <button id="save"></button>
+          </li>
+          <li>
+            <button id="delete"></button>
+          </li>
+          <li>
+            <button id="export"></button>
+          </li>
+          <li>
+            <button id="settings"></button>
+          </li>
+        </ul>
+      </div>
+
+      /* HIGHLIGHTER FUNCTION */
+      function highlight(){
+          if (document.getSelection)
+            let highlightText = document.getSelection();
+            highlightText.style.textDecoration = "underline";
+            
+      return document.getSelection();
+          }
+    ) 
+  }
+}
 
 
 
@@ -82,6 +118,7 @@ export default function Dashboard() {
         </head>
         <body>
           <SideBar/>
+          <ToolBar/>
         </body>
       </html >
   );

@@ -9,6 +9,7 @@ const { textVide } = require('text-vide');
 async function main() {
   const mongo = await MongoClient.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true, keepAlive: true })
   const app = express()
+  const ChatGPTUnofficialProxyAPI = await import('chatgpt').ChatGPTUnofficialProxyAPI
   const api = new ChatGPTUnofficialProxyAPI({
     accessToken: process.env.OPENAI
   })
@@ -79,7 +80,7 @@ async function main() {
     const auth = new chat.Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASS)
     await auth.begin()
     const token = await auth.getAccessToken()
-    const ChatGPTUnofficialProxyAPI = await import('chatgpt').ChatGPTUnofficialProxyAPI
+    
   }
   app.listen(3001, (err) => {
     if (err) console.log("Error in server setup: " + err)
