@@ -4,7 +4,13 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Form from './Form'
 import { motion } from "framer-motion";
+const BACKEND_URL = "https://focusly-api.onrender.com"
 
+function setCookie(key, value) {
+  var expires = new Date();
+  expires.setTime(expires.getTime() + (10 * 365 * 24 * 60 * 60 * 1000));
+  document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
 
 export default function Login() {
   return (
@@ -22,6 +28,10 @@ export default function Login() {
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" ></link>
         </head>
         <body>
+          <div id="errorBox" className="error-box rounded-lg">
+            <img src="assets/img/warning.png" class="warning"></img>
+            <p id="errorMsg" class="error">Invalid. Please try again.</p>
+          </div>
           <div className="box">
             <h2 className="mb-10">Log In</h2>
             <label>Email</label>
@@ -39,6 +49,16 @@ export default function Login() {
   );
 }
 function login() {
-  const data = $('#email').get(0).value
+  const user = {email: $('#email').get(0).value, password: $('#password').get(0).value}
+     let data = await superagent.post(BACKEND_URL + "/user").send(user)
+ if (data.body.text) {
+          $('#errorMsg').get(0).innerText = data.body.text
+          return $('#errorBox').get(0).style.visibility = 'visible'
+        } else if ($('#errorBox').get(0).style.visibility == 'visible') {
+          $('#errorBox').get(0).style.visibility = 'hidden'
+        }
+  setCookie("key", person.password)
+  navigate("/dashboard");
+  
 }
 

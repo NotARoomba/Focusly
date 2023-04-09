@@ -409,9 +409,16 @@ footer{
   text-overflow: ellipsis;
 }
 
+section{
+  width:100%;
+  max-height:100vh;
+}
+
 .document{
   display:flex;
   flex-direction:column;
+  position:relative;
+  top:0;
 }
 
 .miniside{

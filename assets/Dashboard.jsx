@@ -233,11 +233,13 @@ export default function Dashboard() {
             
           </div>
 
-          </section>
-
-          <footer>
+            <footer>
           <ToolBar/>
           </footer>
+
+          </section>
+
+          
 
         </body>
       </html >

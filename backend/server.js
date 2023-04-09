@@ -38,11 +38,9 @@ async function main() {
   })
   app.post('/user', (req, res) => {
     const users = mongo.db("userData").collection("users");
-    users.findOne(req.body).then(user => {
-      res.send(user);
-    }).catch(err => {
-      res.send(err)
-    })
+    const user = await users.findOne(req.body)
+    if (user != null) return res.send(user);
+    else return res.send("That user doesn't exist!")
   })
   app.get('/users', async (req, res) => {
     const users = mongo.db("userData").collection("users");
