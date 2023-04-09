@@ -56,16 +56,15 @@ async function main() {
       return await res.send({body: "Enter a valid email!"})
     }
     const users = mongo.db("userData").collection("users");
-logger.info(users.findOne(req.body))
-    if (users.findOne(req.body) != null) {
-      return await res.send({text: "That email already exists!"}) } else {
+    if (await users.findOne(req.body) != null) {
+      return res.send({text: "That email already exists!"}) } else {
       try {
         await users.insertOne(req.body)
-        return await res.sendStatus(200);
+        return res.sendStatus(200);
       } catch (e) {
-        console.log(e)
-        await res.sendStatus(400);
-        return await res.send(e)
+        logger.error(e)
+        res.sendStatus(400);
+        return res.send(e)
       }
         
     }
