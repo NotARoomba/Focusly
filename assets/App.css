@@ -123,8 +123,19 @@ input[type="radio"]:checked + label{
   background-color: #d1d1d1;
 }
 
-#userSettings input[type="radio"]:checked + label{
-  background-color: #707070;
+#sq1 input[type="radio"]:checked + label{
+  background-color: #e6e6e6;
+  border-color:#bfbfbf;
+}
+
+#sq3 input[type="radio"]:checked + label{
+  background-color: #c7c7c7;
+  color:yellow;
+}
+
+#light:checked + #lightmode{
+  background-color: #c7c7c7;
+  color:yellow;
 }
 
 #pink:checked + label{
@@ -326,9 +337,16 @@ input[type="radio"]:checked + label{
   display:flex;
   align-items:center;
   padding:10px;
-  justify-content:center;
+  justify-content:left;
+  margin-left:40px;
 }
 
-.setting-quest p{
-  c
+#lightmode:hover{
+  color:yellow;
+  transition:.3s;
+}
+
+#darkmode:hover{
+  color:#002270;
+  transition:.4s;
 }

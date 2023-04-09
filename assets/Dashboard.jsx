@@ -108,8 +108,8 @@ export default function Dashboard() {
           <div id="userSettings" className="rounded-lg drop-shadow-xl">
             <h2>Settings</h2>
             <i className="close lni lni-close" onClick={CloseSettings}></i>
-            <div class="setting-quest">
-              <p className="mr-5 ml-2"><b>Reading</b></p>
+            <div class="setting-quest" id="sq1">
+              <p className="mr-5 ml-2 font-semibold">Reading</p>
               <input type="radio" value="bionic" name="reading" id="bionic" />
               <label htmlFor="bionic" className="border-2 border-black rounded-full">
                 <b>Bio</b>nic
@@ -120,6 +120,40 @@ export default function Dashboard() {
                 Standard
               </label>
             </div>
+
+            <div class="setting-quest">
+              <p className="mr-5 ml-2 font-semibold">Color</p>
+              <input type="radio" value="green" name="color" id="green" />
+              <label htmlFor="green" className="border-2 border-black rounded-full">
+                
+              </label>
+
+              <input type="radio" value="blue" name="color" id="blue" />
+              <label htmlFor="blue" className="border-2 border-black rounded-full">
+                
+              </label>
+
+              <input type="radio" value="pink" name="color" id="pink" />
+              <label htmlFor="pink" className="border-2 border-black rounded-full">
+                
+              </label>
+              
+            </div>
+
+            <div class="setting-quest" id="sq3">
+              <p className="mr-5 ml-2 font-semibold">Mode</p>
+              <input type="radio" value="light" name="mode" id="light" />
+              <label htmlFor="light">
+                <i class="text-4xl lni lni-sun mr-10 ml-8" id="lightmode"></i>
+              </label>
+
+              <input type="radio" value="dark" name="mode" id="dark" />
+              <label htmlFor="dark">
+                <i class="text-4xl lni lni-night" id="darkmode"></i>
+              </label>
+            </div>
+
+            <button type="submit" className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-600 text-white button rounded-full mt-10	" id="nextButton">Save</button>
            
             
           </div>

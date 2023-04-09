@@ -307,6 +307,7 @@ export default function Form() {
       eval('section' + (section + 1)).start('visible')
     } 
     if (section >= 7) {
+      document.getElementById("nextButton").style.display = 'none'
       const status = await superagent.post(BACKEND_URL + "/signup").send(person)
       if (status.status == 200) {
         setCookie("key", person.key)
