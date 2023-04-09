@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { MongoClient } = require('mongodb');
-const { ChatGPTUnofficialProxyAPI } = require('chatgpt')
+const ChatGPTUnofficialProxyAPI = await import('chatgpt').ChatGPTUnofficialProxyAPI
 const bodyparser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
