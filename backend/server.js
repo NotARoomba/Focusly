@@ -45,13 +45,16 @@ async function main() {
       res.sendStatus(200)
       return res.send({body: "That email already exists!"})
     }
-    try {
-      await users.insertOne(req.body)
-      res.sendStatus(200);
-    } catch (e) {
-      console.log(e)
-      res.sendStatus(400);
-      return res.send(e)
+    if (req.body.name) {
+      try {
+        await users.insertOne(req.body)
+        res.sendStatus(200);
+      } catch (e) {
+        console.log(e)
+        res.sendStatus(400);
+        return res.send(e)
+      }
+        
     }
   })
   app.post('/userupdate', async (req, res) => {

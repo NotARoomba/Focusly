@@ -36,30 +36,38 @@ import { motion } from "framer-motion";
 class ToolBar extends React.Component{
   render() {
     return(
-      <div className="tool-box rounded-full">
+    
+    <div className="tool-box rounded-full">
         <ul>
           <li>
             <button id="highlight" onClick={highlight}>
-              <i class="icon lni lni-highlight-alt rounded-full"></i>
+              <i className="icon lni lni-highlight-alt rounded-full"></i>
             </button>
             
           </li>
           <li>
             <button id="save">
-              <i class="icon lni lni-save"></i>
+              <i className="icon lni lni-bookmark rounded-full"></i>
             </button>
           </li>
           <li>
-            <button id="delete"></button>
+            <button id="delete">
+             <i className="icon lni lni-trash-can rounded-full"></i>
+            </button>
           </li>
           <li>
-            <button id="export"></button>
+            <button id="export">
+             <i className="icon lni lni-save rounded-full"></i>
+            </button>
           </li>
           <li>
-            <button id="settings"></button>
+            <button id="settings">
+              <i className="icon lni lni-user rounded-full"></i>
+            </button>
           </li>
         </ul>
-      </div>
+    </div>
+     
     )
   }
 }
@@ -85,16 +93,10 @@ export default function Dashboard() {
   
   return (
       <html>
-        <head>
-        </head>
         <body>
+          
           <ToolBar/>
-          
 
-
-
-
-          
         </body>
       </html >
   );

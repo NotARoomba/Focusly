@@ -2,6 +2,7 @@ import './App.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { motion, useAnimationControls } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const BACKEND_URL = "https://focusly-api.notaroomba.xyz"
 
@@ -27,6 +28,7 @@ let person = {
 }
 let section = 1;
 export default function Form() {
+  const navigate = useNavigate();
   const section1 = useAnimationControls()
   const section2 = useAnimationControls()
   const section3 = useAnimationControls()
@@ -39,23 +41,16 @@ export default function Form() {
     hidden: { opacity: 0, transition: { duration: 0.75 } },
     visible: { opacity: 1, display: 'flex', transition: { duration: 0.75 } }
   };
-  return (
+  return (  
     <motion.main
-      className="main__container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.75 }}>
-      <html>
-        <head>
-          <link rel="preconnect" href="https://rsms.me/"></link>
-          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" ></link>
-          <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin></link>
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"></link>
-        </head>
-    
-        <body>
+      transition={{ duration: 0.75 }}> 
+
+    <html>
+      
+      <body>
           <div id="errorBox" className="error-box rounded-lg">
             <img src="assets/img/warning.png" class="warning"></img>
             <p id="errorMsg" class="error">Invalid. Please try again.</p>
@@ -192,28 +187,28 @@ export default function Form() {
                   <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-300">
                     <div className="flex items-center pl-3">
                       <input id="gardening" type="checkbox" value="gardening" className="w-4 h-4 text-blue-300 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-300 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                      <label for="gardening" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Gardening</label>
+                      <label forhtml="gardening" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Gardening</label>
                     </div>
                   </li>
 
                   <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-300">
                     <div className="flex items-center pl-3">
                       <input id="cooking" type="checkbox" value="cooking" className="w-4 h-4 text-blue-300 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                      <label for="cooking" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Cooking</label>
+                      <label forhtml="cooking" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Cooking</label>
                     </div>
                   </li>
 
                   <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-300">
                     <div className="flex items-center pl-3">
                       <input id="sports" type="checkbox" value="sports" className="w-4 h-4 text-blue-300 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                      <label for="sports" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Sports</label>
+                      <label forhtml="sports" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Sports</label>
                     </div>
                   </li>
 
                   <li className="w-full dark:border-gray-600">
                     <div className="flex items-center pl-3">
                       <input id="reading" type="checkbox" value="reading" className="w-4 h-4 text-blue-300 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                      <label for="reading" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Reading</label>
+                      <label forhtml="reading" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Reading</label>
                     </div>
                   </li>
                 </ul>
@@ -225,28 +220,28 @@ export default function Form() {
                   <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-300">
                     <div className="flex items-center pl-3">
                       <input id="painting" type="checkbox" value="painting" className="w-4 h-4 text-blue-300 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-300 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                      <label for="painting" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Painting</label>
+                      <label forhtml="painting" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Painting</label>
                     </div>
                   </li>
 
                   <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-300">
                     <div className="flex items-center pl-3">
                       <input id="videogames" type="checkbox" value="videogames" className="w-4 h-4 text-blue-300 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                      <label for="videogames" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Video Games</label>
+                      <label forhtml="videogames" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Video Games</label>
                     </div>
                   </li>
 
                   <li className="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-300">
                     <div className="flex items-center pl-3">
                       <input id="music" type="checkbox" value="music" className="w-4 h-4 text-blue-300 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                      <label for="music" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Music</label>
+                      <label forhtml="music" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Music</label>
                     </div>
                   </li>
 
                   <li className="w-full dark:border-gray-600">
                     <div className="flex items-center pl-3">
                       <input id="fashion" type="checkbox" value="fashion" className="w-4 h-4 text-blue-300 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
-                      <label for="fashion" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Fashion</label>
+                      <label forhtml="fashion" className="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-black">Fashion</label>
                     </div>
                   </li>
                 </ul>
@@ -261,8 +256,9 @@ export default function Form() {
             <button type="submit" className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10	" id="nextButton" onClick={next}>Next</button>
 
           </div>
-        </body>
-      </html>
+              </body>
+    </html> 
+      
     </motion.main>
 
 
@@ -270,6 +266,7 @@ export default function Form() {
 
 
   async function next() {
+    console.log(section)
     switch (section) {
       case 2:
         person[$('input[type=text]').toArray()[section - 2].name] = $('input[type=text]').toArray()[section - 2].value
@@ -287,6 +284,7 @@ export default function Form() {
         break;
       case 4:
         person[$('input[type=text]').toArray()[section - 2].name] = CryptoJS.SHA256($('input[type=text]').toArray()[section - 2].value)
+        console.log(CryptoJS.SHA256("AAAAA"))
         break;
 
     }
@@ -302,18 +300,20 @@ export default function Form() {
     Array.from(document.querySelectorAll('.section')).forEach(f => f.style.display = 'none')
     document.getElementById("nextButton").disabled = true;
     setTimeout(function() { document.getElementById("nextButton").disabled = false }, 1000);
-    if (section != 8) {
+    if (section < 7) {
       const sectionCurrent = document.getElementById("section-" + (section))
       sectionCurrent.style.display = 'none'
 
       eval('section' + (section + 1)).start('visible')
-      section++
-    } else {
-      if (await superagent.post(BACKEND_URL + "/signup").send(person).sendStatus == 200) {
+    } 
+    if (section >= 7) {
+      const status = await superagent.post(BACKEND_URL + "/signup").send(person)
+      if (status.status == 200) {
         setCookie("key", person.key)
+         navigate("/dashboard");
       }
-
     }
+      section++
   }
 }
 
