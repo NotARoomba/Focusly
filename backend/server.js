@@ -9,10 +9,6 @@ const { textVide } = require('text-vide');
 async function main() {
   const mongo = await MongoClient.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true, keepAlive: true })
   const app = express()
-  const ChatGPTUnofficialProxyAPI = await import('chatgpt').ChatGPTUnofficialProxyAPI
-  const api = new ChatGPTUnofficialProxyAPI({
-    accessToken: process.env.OPENAI
-  })
   const allowedOrigins = ['http://localhost:3000', 'https://focusly.notaroomba.xyz', 'https://notaroomba.xyz', 'http://focusly.notaroomba.xyz'];
 
   app.use(cors({
@@ -76,11 +72,16 @@ async function main() {
   }
   //Efficient Summarization for Educational Texts: Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. The text you have to summarise use is: "explain _ to someone who likes _"
   app.post('/summary'), async (req, res) => {
-    const chat = await import('openai-token')
-    const auth = new chat.Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASS)
+    const openai = await import('openai-token')
+    const auth = new openai.Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASSWORD)
     await auth.begin()
     const token = await auth.getAccessToken()
     
+  const chat = await import('chatgpt')
+  const api = new chat.ChatGPTUnofficialProxyAPI({
+    accessToken: token,
+    apiReverseProxyUrl: "https://api.pawan.krd/backend-api/conversation"
+  })
   }
   app.listen(3001, (err) => {
     if (err) console.log("Error in server setup: " + err)
