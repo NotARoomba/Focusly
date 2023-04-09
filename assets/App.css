@@ -381,6 +381,7 @@ footer{
   left:-5px;
   visibility:hidden;
   z-index:9;
+  top:0;
 }
 
 .myNotes{
@@ -474,4 +475,14 @@ section{
 .doc-parag{
   margin-left:20px;
   padding:10px;
+}
+
+.search{
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.search input{
+  width:100%;
 }

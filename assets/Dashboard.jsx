@@ -85,7 +85,6 @@ class SideBar extends React.Component {
 
 
 
-
 /* SIDE BAR COMPONENT EEEEEEEEEENDS */
 
 
@@ -97,7 +96,7 @@ class ToolBar extends React.Component{
       <div className="tool-box rounded-full drop-shadow-xl">
         <ul>
           <li>
-            <button id="highlight" onClick={highlight}>
+            <button id="new">
               <i className="icon lni lni-highlight-alt rounded-full"></i>
             </button>
             
@@ -146,7 +145,7 @@ function Download() {
 
 
 
-/* TOOOOOOL BOX COMPONENT EEEENDS */
+/* TOOOOOL BOX COMPONENT EEEENDS */
 
 
 
@@ -240,7 +239,26 @@ function closeSide(){
   
 }
 
+class GenerateNote extends React.Component{
+  render() {
+    return(
+      <div className="box">
+        <h2>Generate New Note</h2>
+        <p>What do you want to learn about today?</p>
+          <div className="search">
+            <input type="text" name="search" className="border-2 border-black rounded-full mt-10" />
+             <button type="submit" className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10	" id="nextButton">Generate</button>
+          </div>
+          
+      </div>
+    )
+  }
+}
 
+
+
+
+/** rendering thie fajsjfdnawil */
 
 export default function Dashboard() {
   
@@ -250,13 +268,13 @@ export default function Dashboard() {
           <section>
             <UserSettings/>
             <SideBar/>
-            <NoteDoc/>
-  
+            {/*<NoteDoc/>*/}
+            <GenerateNote/>
             <div className="miniside rounded-lg" id="miniside" onClick={closeSide}><i className="mini lni lni-plus rounded-lg"></i></div>
           
 
             <footer>
-          <ToolBar/>
+              {/*<ToolBar/>*/}
           </footer>
 
           </section>
