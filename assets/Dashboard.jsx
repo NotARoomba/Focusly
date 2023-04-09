@@ -268,6 +268,7 @@ async function generate() {
     data = await superagent.post(BACKEND_URL + "/bionic").send({ text: data.body.text})
   }
   console.log(data)
+  $('#docdoc').append(data)
 }
 
 class GenerateNote extends React.Component{

@@ -7,6 +7,12 @@ const { textVide } = require('text-vide');
 const winston = require('winston');
 const { hostname }  = require('os');
 require('winston-syslog');
+const { ChatGPTAuthTokenService } = require("chat-gpt-authenticator");
+
+const chatGPTAuthTokenService = new ChatGPTAuthTokenService(
+  process.env.OPENAI_EMAIL, 
+  process.env.OPENAI_PASSWORD
+);
 const papertrail = new winston.transports.Syslog({
   host: 'logs2.papertrailapp.com',
   port: 53939,
@@ -77,10 +83,7 @@ async function main() {
   })
   //Efficient Summarization for Educational Texts: Generate concise, detailed summaries of texts from all education levels, covering a wide range of subjects. Use headings for big topics, and bullet points for listable elements. Retain all relevant details while keeping the summaries as short as possible, assuming character limits from the size of the text. Send the finished text ONLY in HTML with all the html elements used. Please also add these classNames to the HTML elements used depending on the type: h1, className="doc-h1"  h2, className= "doc-h2" (normal div / paragraph), = "doc-body". Also for the headers and titles to use the color _ by using a style tag inside the html, for example style="color:Tomato;" would be appropiate for red. The text you have to summarise use is: "explain _ to someone who likes _"
   app.post('/summary', async (req, res) => {
-    const {Authenticator} = await import('openai-token')
-    const auth = new Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASSWORD)
-    await auth.begin()
-    const token = await auth.getAccessToken()
+    const token = await chatGPTAuthTokenService.getToken()
 
     const {ChatGPTUnofficialProxyAPI} = await import('chatgpt')
     const api = new ChatGPTUnofficialProxyAPI({
