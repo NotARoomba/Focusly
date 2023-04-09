@@ -171,7 +171,7 @@ export default function Dashboard() {
         <head>
         </head>
         <body>
-          
+          <section>
           <SideBar/>
           <NoteDoc/>
           <div class="miniside rounded-lg" id="miniside" onClick={closeSide}><i class="mini lni lni-plus rounded-lg"></i></div>
@@ -228,7 +228,11 @@ export default function Dashboard() {
             
           </div>
 
+          </section>
+
+          <footer>
           <ToolBar/>
+          </footer>
 
         </body>
       </html >
