@@ -21,9 +21,6 @@ export default function Home() {
         <head>
           <link rel="preconnect" href="https://rsms.me/"></link>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" ></link>
-          <link rel="preconnect" href="https://fonts.googleapis.com"></link>
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">              </link>
         </head>
         <body>
           <div className="box">
@@ -41,7 +38,8 @@ export default function Home() {
             
             <h1>{title}</h1>
             <h2>Enjoy studying again</h2>
-            <Link className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-700 text-white font-bold button rounded-full mt-10" to="/start">Start</Link>
+            <Link className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-700 text-white font-bold button rounded-full mt-10" to="/login">Log In</Link>
+            <Link className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-700 text-white font-bold button rounded-full mt-5" to="/start">Sign Up</Link>
           </div>
         </body>
       </html >

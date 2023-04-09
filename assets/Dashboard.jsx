@@ -11,12 +11,13 @@ import { motion } from "framer-motion";
 class SideBar extends React.Component {
   render() {
     return (
-      <>
+  <div>
     <div className="text-center">
       <button className="navigationBTN text-white bg-grey-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
    Show navigation
       </button>
     </div>
+    
     <div id="drawer-navigation" className="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-navigation-label">
         <h5 id="drawer-navigation-label" className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">My Notes</h5>
         <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" >
@@ -25,20 +26,20 @@ class SideBar extends React.Component {
     </button>
 
       
-  <div className="py-4 overflow-y-auto">
-      <ul className="space-y-2 font-medium" id="note-list">
-        { /* ADD NOTES HERE */}
+      <div className="py-4 overflow-y-auto">
+        <ul className="space-y-2 font-medium" id="note-list">
+          { /* ADD NOTES HERE */}
           <Note 
             haveNotes = {false}
             />
-      </ul>
-      <div class="sign out">
-        <p>Sign out</p>
+        </ul>
+          <div class="sign out">
+            <p>Sign out</p>
+          </div>
       </div>
-    
-   </div>
+  </div>
 </div>
-      </>
+      
     )
   }
 }
@@ -53,6 +54,8 @@ function Note({ name }) {
   }
   return <h3 className="noSaved">You have no saved notes</h3>;  /* if theres no saaved notes: */
 }
+
+
 
 
 /* SIDE BAR COMPONENT EEEEEEEEEENDS */
