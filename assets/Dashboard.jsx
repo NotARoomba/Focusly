@@ -5,15 +5,63 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Form from './Form'
 import { motion } from "framer-motion";
 
+
+
+/* DOCUMENT COMPONENT STARTS */
+class NoteDoc extends React.Component {
+  render() {
+    return (
+      <div className="document">
+        <header className="doc-head">
+          <h1 className="doc-h1">This is the topic</h1>
+          <p className="doc-parag">This is information about the topic</p>
+        </header>
+        <h2 className="doc-h2">This is a header2</h2>
+        <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</p>
+        <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</p>
+      </div>
+    )
+  }
+}
+/* DOCUMENT COMPONENT ENDS */
+
+
 /* SIDE BAR COMPONENT STAAAAAARTS */
 
 
-/*class SideBar extends React.Component {
+class SideBar extends React.Component {
   render() {
     return (
+      <div className="sidebar rounded-lg drop-shadow-xl" id="sidebar">
+        <div onClick={closeSide}><i className="closeSide lni lni-close" id="closeside"></i></div>
+        
+        <h2 className="myNotes">My Notes</h2>
+        
+        
+        <ul>
+          <li>
+            <div className="note">
+            <input type="radio" value="note1" name="notes" id="note1" />
+              <label htmlFor="note1" className="rounded-full">
+                This is the title
+              </label>
+            </div>
+
+            <div className="note">
+            <input type="radio" value="note2" name="notes" id="note2" />
+              <label htmlFor="note2" className="rounded-full">
+                This is the title
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
     )
   }
-}*/
+}
 
 /*function Note({ name }) {
   if (haveNotes) {
@@ -37,7 +85,7 @@ class ToolBar extends React.Component{
   render() {
     return(
      
-      <div className="tool-box rounded-full">
+      <div className="tool-box rounded-full drop-shadow-xl">
         <ul>
           <li>
             <button id="highlight" onClick={highlight}>
@@ -87,14 +135,30 @@ class ToolBar extends React.Component{
 
 function CloseSettings(){
   const close = document.getElementById("userSettings")
-  if(close.style.display == "none"){
-    close.style.display = "flex"
-  } else {
+  if(close.style.display == "flex"){
     close.style.display = "none"
+  } else {
+    close.style.display = "flex"
   }
   
 }
 
+function closeSide(){
+  
+ const side = document.getElementById("sidebar")
+  const miniside = document.getElementById("miniside")
+
+  if (side.style.visibility == "hidden") {
+    miniside.style.visibility = "hidden"
+    side.style.visibility = "visible"
+  } else {
+    miniside.style.visibility = "visible"
+    side.style.visibility = "hidden"
+    
+  }
+  
+  
+}
 
 
 export default function Dashboard() {
@@ -105,10 +169,13 @@ export default function Dashboard() {
         </head>
         <body>
           <ToolBar/>
+          <SideBar/>
+          <NoteDoc/>
+          <div class="miniside" id="miniside" onClick={closeSide}><i class="mini lni lni-plus"></i></div>
           <div id="userSettings" className="rounded-lg drop-shadow-xl">
             <h2>Settings</h2>
             <i className="close lni lni-close" onClick={CloseSettings}></i>
-            <div class="setting-quest" id="sq1">
+            <div className="setting-quest" id="sq1">
               <p className="mr-5 ml-2 font-semibold">Reading</p>
               <input type="radio" value="bionic" name="reading" id="bionic" />
               <label htmlFor="bionic" className="border-2 border-black rounded-full">
@@ -121,7 +188,7 @@ export default function Dashboard() {
               </label>
             </div>
 
-            <div class="setting-quest">
+            <div className="setting-quest">
               <p className="mr-5 ml-2 font-semibold">Color</p>
               <input type="radio" value="green" name="color" id="green" />
               <label htmlFor="green" className="border-2 border-black rounded-full">
@@ -140,20 +207,20 @@ export default function Dashboard() {
               
             </div>
 
-            <div class="setting-quest" id="sq3">
+            <div className="setting-quest" id="sq3">
               <p className="mr-5 ml-2 font-semibold">Mode</p>
               <input type="radio" value="light" name="mode" id="light" />
               <label htmlFor="light">
-                <i class="text-4xl lni lni-sun mr-10 ml-8" id="lightmode"></i>
+                <i className="text-4xl lni lni-sun mr-10 ml-8" id="lightmode"></i>
               </label>
 
               <input type="radio" value="dark" name="mode" id="dark" />
               <label htmlFor="dark">
-                <i class="text-4xl lni lni-night" id="darkmode"></i>
+                <i className="text-4xl lni lni-night" id="darkmode"></i>
               </label>
             </div>
 
-            <button type="submit" className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-600 text-white button rounded-full mt-10	" id="nextButton">Save</button>
+            <button type="submit" className="transition-all duration-500 bg-neutral-900 hover:bg-neutral-600 text-white button rounded-full" id="nextButton">Save</button>
            
             
           </div>

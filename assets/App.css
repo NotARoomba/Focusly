@@ -125,7 +125,6 @@ input[type="radio"]:checked + label{
 
 #sq1 input[type="radio"]:checked + label{
   background-color: #e6e6e6;
-  border-color:#bfbfbf;
 }
 
 #sq3 input[type="radio"]:checked + label{
@@ -133,10 +132,6 @@ input[type="radio"]:checked + label{
   color:yellow;
 }
 
-#light:checked + #lightmode{
-  background-color: #c7c7c7;
-  color:yellow;
-}
 
 #pink:checked + label{
   background-color: #ffc2ec;
@@ -312,11 +307,12 @@ input[type="radio"]:checked + label{
   position:absolute;
   width:50%;
   height:50%;
-  display:flex;
+  display:none;
   justify-content:center;
   flex-direction:column;
   text-align:center;
   transition:.5s;
+  padding-top:20px;
 }
 
 .close{
@@ -347,6 +343,98 @@ input[type="radio"]:checked + label{
 }
 
 #darkmode:hover{
-  color:#002270;
+  color:yellow;
   transition:.4s;
+}
+
+/*SIDE BAR CSS STARTS*/
+
+.sidebar{
+  background-color:pink;
+  width:200px;
+  height:100vh;
+  display:flex;
+  justify-content:left;
+  flex-direction:column;
+  padding:10px;
+  position:absolute;
+  left:-5px;
+  visibility:hidden;
+}
+
+.myNotes{
+  margin-left:10px;
+  margin-top:15px;
+  margin-bottom:10px;
+}
+
+.closeSide{
+  right:10px;
+  position:absolute;
+}
+
+.closeSide:hover{
+  transition:.4s;
+  color:#963c4b;
+}
+
+.note{
+  position:relative;
+  left:-30px;
+  display:flex;
+}
+
+.note input[type="radio"]:checked + label{
+  color:black;
+  width:600px;
+  background-color:#fff0f0;
+}
+
+.note label{
+  background-color:#ff9999;
+  padding:10px;
+  padding-left:30px;
+}
+
+.document{
+  display:flex;
+  flex-direction:column;
+}
+
+.miniside{
+  background-color: #ff9999;
+  width:40px;
+  height:40px;
+  left:0;
+  top:20px;
+  position:absolute;
+  justify-content:center;
+  display:flex;
+  color:white;
+  font-weight:800px;
+  font-size:20px;
+  align-items:center;
+  visibility:visible;
+}
+
+.miniside:hover{
+  background:#f87777;
+  transition:.4s;
+}
+
+.doc-head{
+  margin-bottom:20px;
+}
+.doc-h1{
+  color:#ff9999;
+}
+.doc-h2{
+  margin-bottom:10px;
+  margin-left:20px;
+  padding:10px;
+}
+
+.doc-parag{
+  margin-left:20px;
+  padding:10px;
 }
