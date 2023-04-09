@@ -283,8 +283,8 @@ export default function Form() {
         }
         break;
       case 4:
-        person[$('input[type=text]').toArray()[section - 2].name] = CryptoJS.SHA256($('input[type=text]').toArray()[section - 2].value)
-        console.log(CryptoJS.SHA256("AAAAA"))
+        person[$('input[type=text]').toArray()[section - 2].name] = sha256($('input[type=text]').toArray()[section - 2].value)
+        console.log(sha256("AAAAA"))
         break;
 
     }

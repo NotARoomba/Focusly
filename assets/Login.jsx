@@ -25,17 +25,20 @@ export default function Login() {
           <div className="box">
             <h2 className="mb-10">Log In</h2>
             <label>Email</label>
-            <input type="text" name="email" className="border-2 border-black rounded-full" />
+            <input type="text" id="email" name="email" className="border-2 border-black rounded-full" />
 
             <label>Password</label>
-            <input type="text" name="password" className="border-2 border-black rounded-full" />
+            <input type="text" id="password" name="password" className="border-2 border-black rounded-full" />
 
-            <button type="submit" className="bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10	" id="loginButton">Log In</button>
+            <button type="submit" className="bg-neutral-900 hover:bg-neutral-600 text-white font-bold button rounded-full mt-10" onClick="login" id="loginButton">Log In</button>
           </div>
         </body>
       </html >
 
     </motion.main>
   );
+}
+function login() {
+  const data = $('#email').get(0).value
 }
 
