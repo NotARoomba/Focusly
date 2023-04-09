@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import Home from "./Home";
 import Form from "./Form";
 import Error from "./Error"
+import Dashboard from "./Dashboard"
 
 export default function App() {
   const router = useRoutes([
@@ -17,6 +18,10 @@ export default function App() {
       path: "start",
       element: <Form />,
     },
+    {
+      path: "dashboard",
+      element: <Dashboard />
+    }
   ]);
   const location = useLocation();
   return (
