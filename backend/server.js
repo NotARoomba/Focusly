@@ -45,10 +45,6 @@ async function main() {
       res.send("That email already exists!")
       return res.sendStatus(400)
     }
-    if (users.findOne({ name: req.body.name }) != null) {
-      res.send("That name already exists!")
-      return res.sendStatus(400)
-    }
     try {
       await users.insertOne(req.body)
       res.sendStatus(200);

@@ -2,6 +2,20 @@ import './App.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { motion, useAnimationControls } from "framer-motion";
+
+const BACKEND_URL = "https://focusly-api.notaroomba.xyz"
+
+function setCookie(key, value) {
+  var expires = new Date();
+  expires.setTime(expires.getTime() + (10 * 365 * 24 * 60 * 60 * 1000));
+  document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
+
+function getCookie(key) {
+  var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+  return keyValue ? keyValue[2] : null;
+}
+
 let person = {
   name: "",
   email: "",
@@ -39,7 +53,7 @@ export default function Form() {
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" ></link>
         </head>
         <body>
-          <div className="error-box rounded-lg">
+          <div id="errorBox" className="error-box rounded-lg">
                 <img src="src/warning.png" class="warning"></img>
                 <p class="error">Invalid. Please try again.</p>
               </div>
@@ -252,17 +266,32 @@ export default function Form() {
   );
 
 
-  function next() {
-      console.log(section)
-    if (section < 5 && section != 1) {
-      person[$('input[type=text]').toArray()[section-2].name] = $('input[type=text]').toArray()[section-2].value
-    } else if (section >= 4) {
+  async function next() {
+    switch (section) {
+      case 2:
+        person[$('input[type=text]').toArray()[section-2].name] = $('input[type=text]').toArray()[section-2].value
+        break;
+      case 3:
+        person[$('input[type=text]').toArray()[section-2].name] = $('input[type=text]').toArray()[section-2].value
+
+        const data = await superagent.post(BACKEND_URL + "/signup").send({ email: person.email})
+        if (data.statusCode == 400) {
+          return $('#errorBox').get(0).style.visibility = 'visible'
+        } else if ($('#errorBox').get(0).style.visibility == 'visible') {
+          $('#errorBox').get(0).style.visibility = 'hidden'
+        }
+      break;
+      case 4:
+        person[$('input[type=text]').toArray()[section-2].name] = CryptoJS.SHA256($('input[type=text]').toArray()[section-2].value)
+        break;
+        
+    }
+    if (section >= 4) {
       $('input[type=radio]:checked').toArray().forEach(e => {
         person[e.name] = e.value
       })
     } else {
       $('input[type=checkbox]:checked').toArray().forEach(e => {
-        console.log(e)
         person.topics.push(e.value)
     })
     }
@@ -275,6 +304,11 @@ export default function Form() {
 
       eval('section' + (section + 1)).start('visible')
       section++
+    } else {
+        if (await superagent.post(BACKEND_URL + "/signup").send(person).sendStatus == 200) {
+          setCookie("key", person.key)
+        }
+        
     }
   }
 }

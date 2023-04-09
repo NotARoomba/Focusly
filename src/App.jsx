@@ -7,6 +7,17 @@ import Form from "./Form";
 import Error from "./Error"
 import Dashboard from "./Dashboard"
 
+function setCookie(key, value) {
+  var expires = new Date();
+  expires.setTime(expires.getTime() + (10 * 365 * 24 * 60 * 60 * 1000));
+  document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
+}
+
+function getCookie(key) {
+  var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+  return keyValue ? keyValue[2] : null;
+}
+
 export default function App() {
   const router = useRoutes([
     {
@@ -24,6 +35,13 @@ export default function App() {
     }
   ]);
   const location = useLocation();
+  if (getCookie("key") != null && location.pathname != '/dashboard') {
+    return (
+    <AnimatePresence mode="wait">
+      {React.cloneElement(router, { key: '/dashboard' })}
+    </AnimatePresence>
+  );
+  }
   return (
     <AnimatePresence mode="wait">
       {React.cloneElement(router, { key: location.pathname })}
