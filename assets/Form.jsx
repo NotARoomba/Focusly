@@ -45,13 +45,16 @@ export default function Form() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.75 }}
-    >
+      transition={{ duration: 0.75 }}>
       <html>
         <head>
           <link rel="preconnect" href="https://rsms.me/"></link>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" ></link>
+          <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"></link>
         </head>
+    
         <body>
           <div id="errorBox" className="error-box rounded-lg">
             <img src="src/img/warning.png" class="warning"></img>
@@ -275,7 +278,7 @@ export default function Form() {
         person[$('input[type=text]').toArray()[section - 2].name] = $('input[type=text]').toArray()[section - 2].value
 
         const data = await superagent.post(BACKEND_URL + "/signup").send({ email: person.email })
-        if (data.statusCode == 400) {
+        if (data.status == 400) {
           return $('#errorBox').get(0).style.visibility = 'visible'
         } else if ($('#errorBox').get(0).style.visibility == 'visible') {
           $('#errorBox').get(0).style.visibility = 'hidden'
@@ -322,20 +325,20 @@ export default function Form() {
 
 
 /*
-const Data = [
-  {
+  nst Data = [
+    
     question1: "What is your... ",
-    answer1: [
+      swer1: [
       "Name",
       "Email",
       "Password",
-
+    
     question2: "Which paragraph do you think is easier to read",
-    answer2: [
+      swer2: [
       "paragraph1",
       "paragraph2"
 
-
+ 
  }
 
 */

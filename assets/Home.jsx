@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Form from './Form'
 import { motion } from "framer-motion";
 
+
 export default function Home() {
   const title = "Welcome to Focusly"
   return (
@@ -20,6 +21,9 @@ export default function Home() {
         <head>
           <link rel="preconnect" href="https://rsms.me/"></link>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" ></link>
+          <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">              </link>
         </head>
         <body>
           <div className="box">

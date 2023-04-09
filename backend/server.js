@@ -41,7 +41,7 @@ async function main() {
       return res.send("Enter a valid email!")
     }
     const users = mongo.db("userData").collection("users");
-    if (users.findOne({ email: req.body.email }) != null) {
+    if (!users.findOne({ email: req.body.email })) {
       res.sendStatus(400)
       return res.send("That email already exists!")
     }
