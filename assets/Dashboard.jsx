@@ -16,14 +16,19 @@ class NoteDoc extends React.Component {
           <h1 className="doc-h1">This is the topic</h1>
           <p className="doc-parag">This is information about the topic</p>
         </header>
-        <h2 className="doc-h2">This is a header2</h2>
-        <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-</p>
-        <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-</p>
 
-        <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-</p>
+        <div className="doc-body">
+          <h2 className="doc-h2">This is a header2</h2>
+          <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
+            </p>
+          <p className="doc-parag">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has             been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into                     electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of                   Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus                 PageMaker including versions of Lorem Ipsum.
+            </p>
+        </div>
+        
       </div>
     )
   }
@@ -174,7 +179,7 @@ export default function Dashboard() {
           <section>
           <SideBar/>
           <NoteDoc/>
-          <div class="miniside rounded-lg" id="miniside" onClick={closeSide}><i class="mini lni lni-plus rounded-lg"></i></div>
+          <div className="miniside rounded-lg" id="miniside" onClick={closeSide}><i className="mini lni lni-plus rounded-lg"></i></div>
           <div id="userSettings" className="rounded-lg drop-shadow-xl">
             <h2>Settings</h2>
             <i className="close lni lni-close" onClick={CloseSettings}></i>

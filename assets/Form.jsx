@@ -283,8 +283,7 @@ export default function Form() {
         }
         break;
       case 4:
-        person[$('input[type=text]').toArray()[section - 2].name] = sha256($('input[type=text]').toArray()[section - 2].value)
-        console.log(sha256("AAAAA"))
+        person[$('input[type=text]').toArray()[section - 2].name] = CryptoJS.SHA256($('input[type=text]').toArray()[section - 2].value).toString()
         break;
 
     }
@@ -300,17 +299,17 @@ export default function Form() {
     Array.from(document.querySelectorAll('.section')).forEach(f => f.style.display = 'none')
     document.getElementById("nextButton").disabled = true;
     setTimeout(function() { document.getElementById("nextButton").disabled = false }, 1000);
-    if (section < 7) {
+    if (section < 8) {
       const sectionCurrent = document.getElementById("section-" + (section))
       sectionCurrent.style.display = 'none'
 
       eval('section' + (section + 1)).start('visible')
     } 
-    if (section >= 7) {
+    if (section >= 8) {
       document.getElementById("nextButton").style.display = 'none'
       const status = await superagent.post(BACKEND_URL + "/signup").send(person)
       if (status.status == 200) {
-        setCookie("key", person.key)
+        setCookie("key", person.password)
          navigate("/dashboard");
       }
     }
