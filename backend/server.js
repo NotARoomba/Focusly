@@ -1,6 +1,5 @@
 require('dotenv').config()
 const { MongoClient } = require('mongodb');
-const ChatGPTUnofficialProxyAPI = await import('chatgpt').ChatGPTUnofficialProxyAPI
 const bodyparser = require('body-parser');
 const express = require('express');
 const cors = require('cors');
@@ -78,8 +77,9 @@ async function main() {
   app.post('/summary'), async (req, res) => {
     const chat = await import('openai-token')
     const auth = new chat.Authenticator(process.env.OPENAI_EMAIL, process.env.OPENAI_PASS)
-  await auth.begin()
-  const token = await auth.getAccessToken()
+    await auth.begin()
+    const token = await auth.getAccessToken()
+    const ChatGPTUnofficialProxyAPI = await import('chatgpt').ChatGPTUnofficialProxyAPI
   }
   app.listen(3001, (err) => {
     if (err) console.log("Error in server setup: " + err)
