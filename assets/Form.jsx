@@ -57,8 +57,8 @@ export default function Form() {
     
         <body>
           <div id="errorBox" className="error-box rounded-lg">
-            <img src="src/img/warning.png" class="warning"></img>
-            <p class="error">Invalid. Please try again.</p>
+            <img src="assets/img/warning.png" class="warning"></img>
+            <p id="errorMsg" class="error">Invalid. Please try again.</p>
           </div>
           <div className="box">
 
@@ -278,7 +278,8 @@ export default function Form() {
         person[$('input[type=text]').toArray()[section - 2].name] = $('input[type=text]').toArray()[section - 2].value
 
         const data = await superagent.post(BACKEND_URL + "/signup").send({ email: person.email })
-        if (data.status == 400) {
+        if (data.body) {
+          $('#errorMsg').get(0).innerHtml = data.body
           return $('#errorBox').get(0).style.visibility = 'visible'
         } else if ($('#errorBox').get(0).style.visibility == 'visible') {
           $('#errorBox').get(0).style.visibility = 'hidden'

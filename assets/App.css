@@ -269,9 +269,23 @@ input[type="radio"]:checked + label{
 .tool-box{
   display:flex;
   flex-direction:column;
-  background-color:grey;
-  width:40px;
-  height: 100%;
-  right:0;
-  position: sticky;
+  background-color:black;
+  width:50px;
+  height:80%;
+  right:10px;
+  position: absolute;
+  justify-content:center;
+  align-items:center;
+}
+
+.icon{
+  font-size:25px;
+  display:flex;
+  color:white;
+  padding:5px;
+}
+
+.icon:hover{
+  transition:.5s;
+  background-color:#545454;
 }

@@ -37,13 +37,13 @@ async function main() {
   })
   app.post('/signup', async (req, res) => {
     if (!req.body.email || !(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(req.body.email))) {
-      res.sendStatus(400)
-      return res.send("Enter a valid email!")
+      res.sendStatus(200)
+      return res.send({body: "Enter a valid email!"})
     }
     const users = mongo.db("userData").collection("users");
     if (!users.findOne({ email: req.body.email })) {
-      res.sendStatus(400)
-      return res.send("That email already exists!")
+      res.sendStatus(200)
+      return res.send({body: "That email already exists!"})
     }
     try {
       await users.insertOne(req.body)

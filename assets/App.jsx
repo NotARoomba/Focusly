@@ -4,8 +4,9 @@ import { AnimatePresence } from "framer-motion";
 
 import Home from "./Home";
 import Form from "./Form";
-import Error from "./Error"
-import Dashboard from "./Dashboard"
+import Error from "./Error";
+import Dashboard from "./Dashboard";
+import Login from "./Login"
 
 function setCookie(key, value) {
   var expires = new Date();
@@ -32,6 +33,10 @@ export default function App() {
     {
       path: "dashboard",
       element: <Dashboard />
+    },
+    {
+      path: "login",
+      element: <Login />,
     }
   ]);
   const location = useLocation();
