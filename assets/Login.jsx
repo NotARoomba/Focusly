@@ -48,7 +48,7 @@ export default function Login() {
     </motion.main>
   );
 }
-function login() {
+async function login() {
   const user = {email: $('#email').get(0).value, password: $('#password').get(0).value}
      let data = await superagent.post(BACKEND_URL + "/user").send(user)
  if (data.body.text) {
