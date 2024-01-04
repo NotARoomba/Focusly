@@ -25,7 +25,7 @@ logger.info('INIT APP')
 async function main() {
   const mongo = await MongoClient.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true, keepAlive: true })
   const app = express()
-  const allowedOrigins = ['http://localhost:3000', 'https://focusly.notaroomba.xyz', 'https://notaroomba.xyz', 'http://focusly.notaroomba.xyz','https://focusly.awangran.repl.co'];
+  const allowedOrigins = ['http://localhost:3000', 'https://focusly.notaroomba.dev', 'https://notaroomba.dev', 'http://focusly.notaroomba.dev','https://focusly.awangran.repl.co'];
 
   app.use(cors({
     origin: allowedOrigins,
